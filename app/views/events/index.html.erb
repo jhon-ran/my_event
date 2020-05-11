@@ -1,0 +1,35 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4"></h1>
+    <% if user_signed_in? %>
+      <h1 class="display-6"><%= current_user.email %> ! </h1>
+    <% else %>
+      <h1 class="display-6"></h1>
+    <% end %>  
+    <p class="lead"></p>
+      <p></p>
+        <%=link_to "New event", new_event_path, class: "btn btn-primary btn-dark" %>
+  </div>
+</div>
+
+
+<div class="card-columns border-info container ">
+
+<% Event.all.order(start_date: :asc).each do |event| %>
+    <div class="card border-success mb-3 text-white bg-secondary">
+      <div class="card-header bg-light text-danger">
+        <small>Date: <%=event.start_date.strftime("%d %m %Y")%></small>
+      </div>
+      <div class="card-body bg-secondary">
+        <%= link_to event_path(event.id), class:"list-group-item list-group-item-action"  do %>
+        
+          <h5 class="card-title"><%=event.title %></h5><br/>
+          <small>Location: <%=event.location%></small>
+
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+</div>
+
