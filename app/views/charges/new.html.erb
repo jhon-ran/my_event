@@ -1,7 +1,7 @@
-<h1>charges#new</h1>
-<h4>Vous allez procéder au paiement</h4>
+<h1>Payment</h1>
+<h4></h4>
 
-Pour l'évènement : <% @event.title %> à <%@event.location%> le <%@event.start_date%>
+Event: <% @event.title %> <%@event.location%> <%@event.start_date%>
 <%= form_tag charges_path(id: @event.id) do %>
 
   <article>
@@ -11,7 +11,7 @@ Pour l'évènement : <% @event.title %> à <%@event.location%> le <%@event.start
       </div>
     <% end %>
     <label class="amount">
-      <span>Montant: <%= "#{@event.price} €" %> </span>
+      <span>Price: <%= "#{@event.price} €" %> </span>
     </label>
     <%#= label_tag 'Montant : ' %>
     <%#= text_field_tag 'amount', @amount%>
